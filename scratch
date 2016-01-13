@@ -1,7 +1,4 @@
-so, getting this deployed... hhahahahhah
-
-0 - download "heroku toolbelt" (config)
-1 - heroku create (from "git"ed file)
-2 - git push heroku master (gives target url)
-
-https://git.heroku.com/polar-reaches-9765.git
+1) implement a csv loader for guests and pairings
+2) implement picture loader which displays pic next to guest name
+3) implement a render function so a guests photo appears at the table
+4) implement drag and drop functions for guests specific chair
