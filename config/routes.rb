@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :pairings, only: [:index, :create, :destroy]
 
   resources :guests
+  post 'guest_load' => 'guest#load'
 
   resources :tables
 

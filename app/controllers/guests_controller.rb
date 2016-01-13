@@ -1,8 +1,6 @@
 class GuestsController < ApplicationController
   def index
-    @event = current_event
-    @guests = current_event.guests.order(:last_name)
-    @guest = Guest.new
+    set_var_for_index
     if request.xhr?
       render json: @guests
     end
@@ -25,8 +23,7 @@ class GuestsController < ApplicationController
   end
 
   def edit
-    @event = current_event
-    @guests = current_event.guests.order(:last_name)
+    set_var_for_index
     @guest = Guest.find_by_id(params[:id])
     @edit = true
     render "index"
@@ -55,8 +52,26 @@ class GuestsController < ApplicationController
     end
   end
 
+  def load
+    parser = CsvParser.new
+    parser.parse_guests(file_params)
+    @errors = parser.errors
+    set_var_for_index
+    render "index"
+  end
+
   private
     def guest_params
       params.require(:guest).permit(:first_name, :last_name, :event_id, :image)
+    end
+
+    def file_params
+      params.require(:guest).permit(:file)
+    end
+
+    def set_var_for_index
+      @event = current_event
+      @guests = current_event.guests.order(:last_name)
+      @guest = Guest.new
     end
 end
