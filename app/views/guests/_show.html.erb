@@ -1,4 +1,7 @@
 <div class="guest-view-container">
+  <span id="guest-image">
+    <%= image_tag(guest.image_url(:thumb).to_s) %>
+  </span>
   <span id="full-name">
     <%= guest.full_name %>
   </span>

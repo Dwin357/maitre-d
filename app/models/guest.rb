@@ -1,4 +1,6 @@
 class Guest < ActiveRecord::Base
+
+
   belongs_to :event
   belongs_to :table
   has_many :pairings
@@ -6,6 +8,8 @@ class Guest < ActiveRecord::Base
 
   validates_presence_of :event
   validates_presence_of :first_name, message: "-- We require at least a first name for each guest."
+
+  mount_uploader :image, ImageUploader
 
   def happy?(guest_ids)
     self.pair_ids.all? { |pair_id| guest_ids.include?(pair_id) }
