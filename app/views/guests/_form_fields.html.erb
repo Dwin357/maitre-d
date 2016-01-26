@@ -6,10 +6,10 @@
     <%= f.label :"last name" %>
     <%= f.text_field :last_name %>
   </div>
-  <div class='input-field'>
-    <%= f.label :"guest image" %>
-    <%= f.file_field :image %>
-  </div>
+<!--   <div class='input-field'>
+    <%#= f.label :"guest image" %>
+    <%#= f.file_field :image %>
+  </div> -->
   <%= f.hidden_field(:event_id, value: current_event.id) %>
   <%= f.submit "Confirm" %>
   
